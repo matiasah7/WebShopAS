@@ -27,10 +27,14 @@
             <%
                 out.print(book.getBookName() + "   |   " + book.getAuthor() + "   |   " + book.getDescription() + "   |     price: " + book.getPrice());
             %> 
-
-        </p>
-        <%}
-            }
-        %>
-    </body>
+        <form name="removeFromCart" action="FrontServlet">
+            <input type="hidden" name="command" value="RemoveBookFromCartCommand">
+            <input type="hidden" name="bookIsbn" value='<% out.print(book.getIsbn()); %>'>
+            <input type="submit" name="Remove" value="Remove">
+        </form>
+    </p>
+    <%}
+        }
+    %>
+</body>
 </html>
