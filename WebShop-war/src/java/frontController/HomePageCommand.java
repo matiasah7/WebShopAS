@@ -17,6 +17,9 @@ import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
+import util.ShoppingCart;
+import util.ShoppingCartLocal;
 
 /**
  *
@@ -27,21 +30,35 @@ public class HomePageCommand extends FrontCommand {
     @Override
     public void process() {
         try {
-            BookFacadeLocal bookFacade = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/BookFacade");
-            List<Book> products = bookFacade.findAll();
-            ArrayList<Book> productsList = new ArrayList();
-            for (Book product : products) {
-                productsList.add(product);
-            }
-            request.setAttribute("products", productsList);
+            setShoppingCart();
+            setBooksListAttribute();
             forward("/index.jsp");
-        } catch (ServletException ex) {
-            Logger.getLogger(HomePageCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(HomePageCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
+        } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(HomePageCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    private void setShoppingCart() throws NamingException {
+        HttpSession session = request.getSession(true);
+        ShoppingCartLocal shoppingCart = (ShoppingCartLocal) session.getAttribute("shoppingCart");
+        
+        if (shoppingCart == null) {
+            shoppingCart = (ShoppingCartLocal)InitialContext.doLookup("java:global/WebShop/WebShop-ejb/ShoppingCart!util.ShoppingCartLocal");
+            session.setAttribute("shoppingCart", shoppingCart);
+        }
+    }
+
+    private void setBooksListAttribute() throws NamingException {
+        BookFacadeLocal bookFacade = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/BookFacade");
+        ArrayList<Book> productsList = getBooksArrayList(bookFacade);
+        request.setAttribute("products", productsList);
+    }
+
+    private ArrayList<Book> getBooksArrayList(BookFacadeLocal bookFacade) {
+        List<Book> products = bookFacade.findAll();
+        ArrayList<Book> productsList = new ArrayList();
+        productsList.addAll(products);
+        return productsList;
+    }
+
 }
