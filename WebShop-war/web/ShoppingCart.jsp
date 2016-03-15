@@ -4,6 +4,9 @@
     Author     : Soraya
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="entity.Book"%>
+<%@page import="util.ShoppingCartLocal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,5 +16,21 @@
     </head>
     <body>
         <h1>Shopping Cart</h1>
+        <a href="index.jsp">Home</a> 
+
+        <%
+            ArrayList<Book> list = ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getShoppingCartList();
+            if (list != null) {
+                for (Book book : list) {
+        %>
+        <p>
+            <%
+                out.print(book.getBookName() + "   |   " + book.getAuthor() + "   |   " + book.getDescription() + "   |     price: " + book.getPrice());
+            %> 
+
+        </p>
+        <%}
+            }
+        %>
     </body>
 </html>

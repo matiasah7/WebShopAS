@@ -17,20 +17,24 @@
         <h1>Welcome to our store!</h1>
         <a href="ShoppingCart.jsp">View Shopping Cart</a>
         <%
-            ArrayList<Book> list =(ArrayList) request.getAttribute("books");
-            for (Book book : list){
-            %>
-            <p>
-                <%
-                    out.print(book.getBookName() + "   |   " + book.getAuthor() + "   |   " + book.getDescription() + "   |     price: "  + book.getPrice());
-                    %> 
-            <form name="addToCart" action="FrontServlet">
-                <input type="hidden" name="command" value="AddBookToCartCommand">
-                <input type="hidden" name="book" value="<% out.print(book.getIsbn()); %>">
-                <input type="submit" name="add" value="Add">
-            </form>
-            </p>
-            <%}
-                %>
+            ArrayList<Book> list = (ArrayList) session.getAttribute("books");
+            if (list != null) {
+                for (Book book : list) {
+        %>
+        <p>
+            <%
+                out.print(book.getBookName() + "   |   " + book.getAuthor() + "   |   " + book.getDescription() + "   |     price: " + book.getPrice());
+            %> 
+
+        </p>
+        <form name="addToCart" action="FrontServlet">
+            <input type="hidden" name="command" value="AddBookToCartCommand">
+            <input type="hidden" name="bookIsbn" value='<% out.print(book.getIsbn()); %>'>
+            <input type="submit" name="add" value="Add">
+        </form>
+        <%}
+            }
+        %>
+
     </body>
 </html>

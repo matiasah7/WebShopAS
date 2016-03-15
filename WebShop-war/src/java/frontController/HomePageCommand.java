@@ -6,9 +6,7 @@
 package frontController;
 
 import controller.BookFacadeLocal;
-import controller.ProductFacadeLocal;
 import entity.Book;
-import entity.Product;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
-import util.ShoppingCart;
 import util.ShoppingCartLocal;
 
 /**
@@ -51,7 +48,7 @@ public class HomePageCommand extends FrontCommand {
     private void setBooksListAttribute() throws NamingException {
         BookFacadeLocal bookFacade = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/BookFacade");
         ArrayList<Book> productsList = getBooksArrayList(bookFacade);
-        request.setAttribute("products", productsList);
+        request.getSession().setAttribute("books", productsList);
     }
 
     private ArrayList<Book> getBooksArrayList(BookFacadeLocal bookFacade) {
