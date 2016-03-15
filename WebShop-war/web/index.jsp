@@ -15,16 +15,18 @@
     </head>
     <body>
         <h1>Welcome to our store!</h1>
+        <a href="ShoppingCart.jsp">View Shopping Cart</a>
         <%
-            ArrayList<Book> list =(ArrayList) request.getAttribute("products");
-            for (Book product : list){
+            ArrayList<Book> list =(ArrayList) request.getAttribute("books");
+            for (Book book : list){
             %>
             <p>
                 <%
-                    out.print(product.getBookName() + "   |   " + product.getAuthor() + "   |   " + product.getDescription() + "   |     price: "  + product.getPrice());
+                    out.print(book.getBookName() + "   |   " + book.getAuthor() + "   |   " + book.getDescription() + "   |     price: "  + book.getPrice());
                     %> 
-            <form name="addToCart" action="">
-                <input name="book" value="" type="hidden">
+            <form name="addToCart" action="FrontServlet">
+                <input type="hidden" name="command" value="AddBookToCartCommand">
+                <input type="hidden" name="book" value="<% out.print(book.getIsbn()); %>">
                 <input type="submit" name="add" value="Add">
             </form>
             </p>

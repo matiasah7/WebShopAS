@@ -10,17 +10,14 @@ import frontController.HomePageCommand;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import util.ShoppingCart;
 
-/**
+/*
  *
  * @author Matias
  */
@@ -57,7 +54,7 @@ public class FrontServlet extends HttpServlet {
         try {
             FrontCommand f = (FrontCommand) getCommandClass(req).newInstance();
             return f;
-        } catch (Exception e) {
+        } catch (InstantiationException | IllegalAccessException e) {
         };
         return null;
     }
