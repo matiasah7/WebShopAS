@@ -52,4 +52,11 @@ public class ShoppingCart implements ShoppingCartLocal {
         }
         return totalValue;
     }
+
+    @Override
+    public boolean isEmpty() {
+        return (shoppingCart.isEmpty());
+    }
+    
+    
 }

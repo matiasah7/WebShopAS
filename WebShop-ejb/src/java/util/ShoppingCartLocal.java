@@ -22,4 +22,5 @@ public interface ShoppingCartLocal {
     void removeBook(int cartBookId);
     void clear();
     int getTotalValue();
+    boolean isEmpty();
 }

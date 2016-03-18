@@ -35,6 +35,8 @@
     </p>
     <%}
         }
+        if(!((ShoppingCartLocal) session.getAttribute("shoppingCart")).isEmpty())
+            out.print("Total: " + ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getTotalValue() + "€");
     %>
 </body>
 </html>
