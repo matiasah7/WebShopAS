@@ -1,0 +1,16 @@
+body{
+    padding-top: 50px;
+}
+
+.cart{
+    padding-right: 15px;
+}
+
+.contenedor{
+    height: 400px;
+    width: 250px;
+}
+
+.bookImage{
+    margin-top: 10px;
+}

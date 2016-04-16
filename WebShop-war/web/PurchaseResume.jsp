@@ -34,16 +34,11 @@
 
         <main>
             <div class="jumbotron ">
-                <div class="row">
                     <%
                         ArrayList<Book> list = ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getShoppingCartList();
                         if (list != null) {
                             for (Book book : list) {
                     %>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail contenedor">
-                            <img src="./Resources/llamas1.jpg" height="30%" width="30%" class="bookImage">
-                            <div class="caption text-center">
                                 <h3>   
                                     <%
                                         out.print(book.getBookName());
@@ -60,19 +55,10 @@
                                     <%out.print(book.getPrice() + " €");
                                     %> 
                                 </p>
-                                <form name="removeFromCart" action="FrontServlet">
-                                    <input type="hidden" name="command" value="RemoveBookFromCartCommand">
-                                    <input type="hidden" name="bookIsbn" value='<% out.print(book.getIsbn()); %>'>
-                                    <input type="submit" name="Remove" value="Remove">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
 
                     <%}
                         }
                     %>
-                </div>
 
             </div>
             <nav class="navbar navbar-inverse">
@@ -86,7 +72,6 @@
                             }
                         %>
                     </span></h3>
-                <h3><li><a href="PurchaseResume.jsp" ><i class="fa fa-money" aria-hidden="true"></i> Buy All</a></li> </h3>
             </nav>
         </main>
 
