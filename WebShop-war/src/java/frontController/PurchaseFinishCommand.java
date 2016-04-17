@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package frontController;
 
 import entity.Book;
@@ -13,10 +9,6 @@ import javax.servlet.ServletException;
 import util.ShoppingCart;
 import util.ShoppingCartLocal;
 
-/**
- *
- * @author Matias
- */
 public class PurchaseFinishCommand extends FrontCommand{
 
     @Override
