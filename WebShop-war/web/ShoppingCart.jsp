@@ -86,7 +86,7 @@
                             }
                         %>
                     </span></h3>
-                <h3><li><a href="PurchaseResume.jsp" ><i class="fa fa-money" aria-hidden="true"></i> Buy All</a></li> </h3>
+                    <h3><li><a href="PersonalPurchaseDetails.jsp" ><i class="fa fa-money" aria-hidden="true"></i> Buy All</a></li> </h3>
             </nav>
         </main>
 

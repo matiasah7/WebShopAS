@@ -34,31 +34,7 @@
 
         <main>
             <div class="jumbotron ">
-                <%
-                    ArrayList<Book> list = ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getShoppingCartList();
-                    if (list != null) {
-                        for (Book book : list) {
-                %>
-                <h3>   
-                    <%
-                        out.print(book.getBookName());
-                    %>
-                </h3>
-                <p>
-                    <br>
-                    <%
-                        out.print(book.getAuthor());
-                    %>
-                    <br>
-                    <%out.print(book.getDescription()); %>
-                    <br>
-                    <%out.print(book.getPrice() + " €");
-                    %> 
-                </p>
 
-                <%}
-                    }
-                %>
 
             </div>
             <nav class="navbar navbar-inverse">
@@ -72,7 +48,7 @@
                             }
                         %>
                     </span></h3>
-                    <h3><li><a href="index.jsp" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li> </h3>
+                <h3><li><a href="PurchaseResume.jsp" ><i class="fa fa-money" aria-hidden="true"></i> Pay</a></li> </h3>
             </nav>
         </main>
 
