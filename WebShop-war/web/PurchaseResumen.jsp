@@ -1,9 +1,3 @@
-<%-- 
-    Document   : ShoppingCart
-    Created on : 15-mar-2016, 16:46:42
-    Author     : Soraya
---%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="entity.Book"%>
 <%@page import="util.ShoppingCartLocal"%>
@@ -34,47 +28,36 @@
 
         <main>
             <div class="jumbotron ">
-                <%
-                    ArrayList<Book> list = ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getShoppingCartList();
-                    if (list != null) {
-                        for (Book book : list) {
-                %>
-                <h3>   
-                    <%
-                        out.print(book.getBookName());
-                    %>
-                </h3>
-                <p>
-                    <br>
-                    <%
-                        out.print(book.getAuthor());
-                    %>
-                    <br>
-                    <%out.print(book.getDescription()); %>
-                    <br>
-                    <%out.print(book.getPrice() + " €");
-                    %> 
-                </p>
+                <table class="table table-striped">
+                    <tr>
+                        <td><strong>Book</strong></td>
+                        <td><strong>Author</strong></td>
+                        <td><strong>Price</strong></td>
+                    </tr>
+                    <tr>
+                        <%ArrayList<Book> list = ((ShoppingCartLocal) session.getAttribute("purchaseResumenCart")).getShoppingCartList();
+                            if (list != null) {
+                                for (Book book : list) {%>
+                        <td><%out.print(book.getBookName());%></td>
+                        <td><%out.print(book.getAuthor());%></td>
+                        <td><%out.print(book.getPrice() + " €");%></td>
+                    </tr>
 
-                <%}
-                    }
-                %>
-
+                                <%}
+                            }%>
+                </table>
             </div>
+        </main>
+        <footer>     
             <nav class="navbar navbar-inverse">
 
-                <%
-                    if (!((ShoppingCartLocal) session.getAttribute("shoppingCart")).isEmpty()) {
-                %>
+                <%if (!((ShoppingCartLocal) session.getAttribute("shoppingCart")).isEmpty()) {%>
                 <h3><span class="nav navbar-nav navbar-text">
-                        <%
-                                out.print("Total: " + ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getTotalValue() + "€");
-                            }
-                        %>
+                        <% out.print("Total: " + ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getTotalValue() + "€");
+                            }%>
                     </span></h3>
-                    <h3><li><a href="index.jsp" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li> </h3>
+                <h3><li><a href="index.jsp" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li> </h3>
             </nav>
-        </main>
-
+        </footer>
     </body>
 </html>

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 14-mar-2016, 23:19:42
-    Author     : Matias
---%>
-
 <%@page import="entity.Book"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -44,30 +38,15 @@
                                 <div class="thumbnail contenedor">
                             <img src="./Resources/llamas1.jpg" height="30%" width="30%" class="bookImage">
                             <div class="caption text-center">
-                                <h3>
-                                    <%
-                                        out.println(book.getBookName());
-                                    %>
-                                </h3>    
+                                <h3><%out.println(book.getBookName());%></h3>    
                                 <p>
-                                    <br>
-                                    <%
-                                        out.println(book.getAuthor());
-                                    %>
-                                    <br>
-                                    <%
-                                        out.println(book.getDescription());
-                                    %>
-                                    <br>
-                                    <%
-                                        out.println(book.getPrice() + " €");
-                                    %> 
-
+                                    <br><%out.println(book.getAuthor());%>
+                                    <br><%out.println(book.getDescription());%>
+                                    <br><%out.println(book.getPrice() + " €");%> 
                                 </p>
                                 <form name="addToCart" action="FrontServlet">
                                     <input type="hidden" name="command" value="AddBookToCartCommand">
                                     <input type="hidden" name="bookIsbn" value='<% out.print(book.getIsbn()); %>'>
-
                                     <button type="submit" class="btn btn-primary" value="Add" name="add">Add</button>
                                 </form>
                             </div>

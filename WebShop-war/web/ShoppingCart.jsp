@@ -1,9 +1,3 @@
-<%-- 
-    Document   : ShoppingCart
-    Created on : 15-mar-2016, 16:46:42
-    Author     : Soraya
---%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="entity.Book"%>
 <%@page import="util.ShoppingCartLocal"%>
@@ -35,30 +29,18 @@
         <main>
             <div class="jumbotron ">
                 <div class="row">
-                    <%
-                        ArrayList<Book> list = ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getShoppingCartList();
+                    <%ArrayList<Book> list = ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getShoppingCartList();
                         if (list != null) {
-                            for (Book book : list) {
-                    %>
+                            for (Book book : list) {%>
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail contenedor">
                             <img src="./Resources/llamas1.jpg" height="30%" width="30%" class="bookImage">
                             <div class="caption text-center">
-                                <h3>   
-                                    <%
-                                        out.print(book.getBookName());
-                                    %>
-                                </h3>
+                                <h3><%out.print(book.getBookName());%></h3>
                                 <p>
-                                    <br>
-                                    <%
-                                        out.print(book.getAuthor());
-                                    %>
-                                    <br>
-                                    <%out.print(book.getDescription()); %>
-                                    <br>
-                                    <%out.print(book.getPrice() + " €");
-                                    %> 
+                                    <br><%out.print(book.getAuthor());%>
+                                    <br><%out.print(book.getDescription()); %>
+                                    <br><%out.print(book.getPrice() + " €");%> 
                                 </p>
                                 <form name="removeFromCart" action="FrontServlet">
                                     <input type="hidden" name="command" value="RemoveBookFromCartCommand">
@@ -77,16 +59,12 @@
             </div>
             <nav class="navbar navbar-inverse">
 
-                <%
-                    if (!((ShoppingCartLocal) session.getAttribute("shoppingCart")).isEmpty()) {
-                %>
+                <%if (!((ShoppingCartLocal) session.getAttribute("shoppingCart")).isEmpty()) {%>
                 <h3><span class="nav navbar-nav navbar-text">
-                        <%
-                                out.print("Total: " + ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getTotalValue() + "€");
-                            }
-                        %>
+                        <%out.print("Total: " + ((ShoppingCartLocal) session.getAttribute("shoppingCart")).getTotalValue() + "€");%>
                     </span></h3>
-                    <h3><li><a href="PersonalPurchaseDetails.jsp" ><i class="fa fa-money" aria-hidden="true"></i> Buy All</a></li> </h3>
+                <h3><li><a href="PersonalPurchaseDetails.jsp" ><i class="fa fa-money" aria-hidden="true"></i> Buy All</a></li> </h3>
+                        <%}%>
             </nav>
         </main>
 
