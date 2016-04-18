@@ -18,6 +18,7 @@ import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import util.ShoppingCartLocal;
+import util.Statistics;
 
 /**
  *
@@ -39,8 +40,11 @@ public class HomePageCommand extends FrontCommand {
     private void setShoppingCart() throws NamingException {
         HttpSession session = request.getSession(true);
         ShoppingCartLocal shoppingCart = (ShoppingCartLocal) session.getAttribute("shoppingCart");
-
+        Statistics stats = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/Statistics!util.Statistics");
+        request.setAttribute("onlineUsers", stats.getOnlineUsers());
         if (shoppingCart == null) {
+            stats.addUser();
+            request.setAttribute("onlineUsers", stats.getOnlineUsers());
             shoppingCart = (ShoppingCartLocal) InitialContext.doLookup("java:global/WebShop/WebShop-ejb/ShoppingCart!util.ShoppingCartLocal");
             session.setAttribute("shoppingCart", shoppingCart);
         }
@@ -53,7 +57,7 @@ public class HomePageCommand extends FrontCommand {
     }
 
     private ArrayList<Book> getBooksArrayList(BookFacadeLocal bookFacade, int page) {
-        int range[] = {3*(page-1),3*(page-1)+2};
+        int range[] = {3 * (page - 1), 3 * (page - 1) + 2};
         List<Book> products = bookFacade.findRange(range);
         ArrayList<Book> productsList = new ArrayList();
         productsList.addAll(products);
@@ -62,11 +66,10 @@ public class HomePageCommand extends FrontCommand {
 
     private int getPage() {
         HttpSession session = request.getSession(true);
-        if (session.getAttribute("homePageNumber") == null) {
+        if (request.getParameter("homePageNumber") == null) {
             return 1;
         }
-        return (int) session.getAttribute("homePageNumber");
+        return Integer.parseInt(request.getParameter("homePageNumber"));
     }
-
 
 }

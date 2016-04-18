@@ -1,3 +1,6 @@
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="util.Statistics"%>
+<%@page import="javax.ejb.EJB"%>
 <%@page import="entity.Book"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,6 +25,11 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="index.jsp" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li> 
                 </ul>
+                <div class="navbar-header">
+                    <p class="navbar-brand">
+                        <% out.print("Online users: " + request.getAttribute("onlineUsers")); %>    
+                    </p>
+                </div>
             </nav>
         </header>
 
@@ -62,21 +70,11 @@
         <footer>
 
             <nav>
-                <ul class="pagination  pagination-lg">
-                    <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li><a href="#"<% session.setAttribute("purchaseResumenCart", 1); %>>1</a></li>
-                    <li><a href="#"<% session.setAttribute("purchaseResumenCart", 2); %>>2</a></li>
-                    <li><a href="#"<% session.setAttribute("purchaseResumenCart", 3); %>>3</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
+                <form name="viewPage" action="FrontServlet">
+                    <input type="submit" class="btn btn-toolbar" value="1" name="homePageNumber"></input>
+                    <input type="submit" class="btn btn-toolbar" value="2" name="homePageNumber"></input>
+                    <input type="submit" class="btn btn-toolbar" value="3" name="homePageNumber"></input>
+                </form>
             </nav>
         </footer>  
     </body>
