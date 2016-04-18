@@ -17,25 +17,21 @@ import javax.ejb.Startup;
 @Singleton
 public class Statistics{
 
-    private int onlineUsers;
+    private int visitors;
     private int soldBooks;
 
     @PostConstruct
     public void init() {
-        onlineUsers = 0;
+        visitors = 0;
         soldBooks = 0;
     }
     
-    public void addUser() {
-        onlineUsers++;
+    public void addVisitor() {
+        visitors++;
     }
 
-    public void deleteUser() {
-        onlineUsers--;
-    }
-
-    public int getOnlineUsers() {
-        return onlineUsers;
+    public int getVisitors() {
+        return visitors;
     }
 
     public void addSoldBooks(int books) {

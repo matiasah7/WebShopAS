@@ -42,10 +42,10 @@ public class HomePageCommand extends FrontCommand {
         HttpSession session = request.getSession(true);
         ShoppingCartLocal shoppingCart = (ShoppingCartLocal) session.getAttribute("shoppingCart");
         Statistics stats = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/Statistics!util.Statistics");
-        request.setAttribute("onlineUsers", stats.getOnlineUsers());
+        //request.setAttribute("visitors", stats.getVisitors());
         if (shoppingCart == null) {
-            stats.addUser();
-            request.setAttribute("onlineUsers", stats.getOnlineUsers());
+            stats.addVisitor();
+          //  request.setAttribute("visitors", stats.getVisitors());
             shoppingCart = (ShoppingCartLocal) InitialContext.doLookup("java:global/WebShop/WebShop-ejb/ShoppingCart!util.ShoppingCartLocal");
             session.setAttribute("shoppingCart", shoppingCart);
         }

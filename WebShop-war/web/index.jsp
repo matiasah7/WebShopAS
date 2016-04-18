@@ -27,7 +27,9 @@
                 </ul>
                 <div class="navbar-header">
                     <p class="navbar-brand">
-                        <% out.print("Online users: " + request.getAttribute("onlineUsers")); %>    
+                        <% Statistics stats = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/Statistics!util.Statistics");
+                            //out.print("Visitors: " + request.getAttribute("visitors")); 
+                            out.print("Visitors: " + stats.getVisitors()); %>    
                     </p>
                 </div>
             </nav>
