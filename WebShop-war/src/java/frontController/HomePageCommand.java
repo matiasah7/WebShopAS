@@ -31,6 +31,7 @@ public class HomePageCommand extends FrontCommand {
         try {
             setShoppingCart();
             setBooksListAttribute(getPage());
+            setAllBookListAttribute();
             forward("/index.jsp");
         } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(HomePageCommand.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,6 +71,14 @@ public class HomePageCommand extends FrontCommand {
             return 1;
         }
         return Integer.parseInt(request.getParameter("homePageNumber"));
+    }
+
+    private void setAllBookListAttribute() throws NamingException {
+        BookFacadeLocal bookFacade = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/BookFacade");
+        List<Book> products = bookFacade.findAll();
+        ArrayList<Book> productsList = new ArrayList();
+        productsList.addAll(products);
+        request.getSession().setAttribute("allBooks", productsList);
     }
 
 }

@@ -37,13 +37,13 @@
 
             <div class="jumbotron ">
                 <div class="row">
-                            <%
-                                ArrayList<Book> list = (ArrayList) session.getAttribute("books");
-                                if (list != null) {
-                                    for (Book book : list) {
-                            %>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail contenedor">
+                    <%
+                        ArrayList<Book> list = (ArrayList) session.getAttribute("books");
+                        if (list != null) {
+                            for (Book book : list) {
+                    %>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail contenedor">
                             <img src="./Resources/llamas1.jpg" height="30%" width="30%" class="bookImage">
                             <div class="caption text-center">
                                 <h3><%out.println(book.getBookName());%></h3>    
@@ -60,20 +60,20 @@
                             </div>
                         </div>
                     </div>
-                        <%}
-                            }
-                        %>
+                    <%}
+                        }
+                    %>
                 </div>
             </div>
         </main>
 
         <footer>
-
             <nav>
                 <form name="viewPage" action="FrontServlet">
                     <input type="submit" class="btn btn-toolbar" value="1" name="homePageNumber"></input>
-                    <input type="submit" class="btn btn-toolbar" value="2" name="homePageNumber"></input>
-                    <input type="submit" class="btn btn-toolbar" value="3" name="homePageNumber"></input>
+                    <% for (int i = 2; i <= (int) Math.ceil(((double)((ArrayList) session.getAttribute("allBooks")).size() / 3)); i++) { %> 
+                    <input type="submit" class="btn btn-toolbar" value="<% out.print(i); %>" name="homePageNumber"></input>
+                    <%   }%>
                 </form>
             </nav>
         </footer>  
