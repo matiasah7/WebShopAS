@@ -1,1 +1,8 @@
 /WebShop-ejb/dist/
+/nbproject/private/
+/WebShop-ejb/nbproject/private/
+/WebShop-war/nbproject/private/
+/WebShop-ejb/build/
+/WebShop-war/build/
+/build/
+/WebShop-war/dist/

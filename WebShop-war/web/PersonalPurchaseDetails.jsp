@@ -1,3 +1,5 @@
+<%@page import="util.Statistics"%>
+<%@page import="javax.naming.InitialContext"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="entity.Book"%>
 <%@page import="util.ShoppingCartLocal"%>
@@ -23,6 +25,18 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="index.jsp" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li> 
                 </ul>
+                <div class="navbar-header">
+                    <p class="navbar-brand">
+                        <% Statistics stats = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/Statistics!util.Statistics");
+                            //out.print("Visitors: " + request.getAttribute("visitors")); 
+                            out.print("Visitors: " + stats.getVisitors()); %>    
+                    </p>
+                </div>
+                <div class="navbar-header">
+                    <p class="navbar-brand">
+                        <% out.print("Sold Books: " + stats.getSoldBooks()); %>    
+                    </p>
+                </div>
             </nav>
         </header>
 

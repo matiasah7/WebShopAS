@@ -74,7 +74,7 @@ public class Book implements Serializable {
     private String description;
     @JoinColumn(name = "PRODUCT_CODE", referencedColumnName = "PROD_CODE")
     @ManyToOne(optional = false)
-    private Productcode_1 productCode;
+    private ProductCode productCode;
 
     public Book() {
     }
@@ -154,11 +154,11 @@ public class Book implements Serializable {
         this.description = description;
     }
 
-    public Productcode_1 getProductCode() {
+    public ProductCode getProductCode() {
         return productCode;
     }
 
-    public void setProductCode(Productcode_1 productCode) {
+    public void setProductCode(ProductCode productCode) {
         this.productCode = productCode;
     }
 
