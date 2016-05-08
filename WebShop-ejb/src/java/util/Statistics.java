@@ -6,6 +6,7 @@
 package util;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
@@ -21,6 +22,7 @@ public class Statistics{
     private int soldBooks;
 
     @PostConstruct
+    @Schedule(minute="*/1", hour="*")
     public void init() {
         visitors = 0;
         soldBooks = 0;

@@ -25,16 +25,15 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="index.jsp" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li> 
                 </ul>
-                <div class="navbar-header">
+               <div class="navbar-header">
                     <p class="navbar-brand">
                         <% Statistics stats = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/Statistics!util.Statistics");
-                            //out.print("Visitors: " + request.getAttribute("visitors")); 
-                            out.print("Visitors: " + stats.getVisitors()); %>    
+                            out.print("New visitors in last minute: " + stats.getVisitors()); %>    
                     </p>
                 </div>
                 <div class="navbar-header">
                     <p class="navbar-brand">
-                        <% out.print("Sold Books: " + stats.getSoldBooks()); %>    
+                        <% out.print("Sold Books in last minute: " + stats.getSoldBooks()); %>    
                     </p>
                 </div>
             </nav>

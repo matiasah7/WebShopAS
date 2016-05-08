@@ -28,20 +28,33 @@
                 <div class="navbar-header">
                     <p class="navbar-brand">
                         <% Statistics stats = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/Statistics!util.Statistics");
-                            out.print("Visitors: " + stats.getVisitors()); %>    
+                            out.print("New visitors in last minute: " + stats.getVisitors()); %>    
                     </p>
                 </div>
                 <div class="navbar-header">
                     <p class="navbar-brand">
-                        <% out.print("Sold Books: " + stats.getSoldBooks()); %>    
+                        <% out.print("Sold Books in last minute: " + stats.getSoldBooks()); %>    
                     </p>
                 </div>
+
             </nav>
         </header>
 
         <main>
 
             <div class="jumbotron ">
+                  <div class="row">
+                    <div class="col-md-4 col-md-offset-3">
+                        <form action="FrontServlet" class="search-form">
+                            <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <input type="hidden" name="command" value="searchBookCommand">
+                                <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>    
                 <div class="row">
                     <%
                         ArrayList<Book> list = (ArrayList) session.getAttribute("books");
@@ -77,7 +90,7 @@
             <nav>
                 <form name="viewPage" action="FrontServlet">
                     <input type="submit" class="btn btn-toolbar" value="1" name="homePageNumber"></input>
-                    <% for (int i = 2; i <= (int) Math.ceil(((double)((ArrayList) session.getAttribute("allBooks")).size() / 3)); i++) { %> 
+                    <% for (int i = 2; i <= (int) Math.ceil(((double) ((ArrayList) session.getAttribute("allBooks")).size() / 3)); i++) { %> 
                     <input type="submit" class="btn btn-toolbar" value="<% out.print(i); %>" name="homePageNumber"></input>
                     <%   }%>
                 </form>
