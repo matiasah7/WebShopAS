@@ -22,6 +22,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="cart"><a href="ShoppingCart.jsp" ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</a></li> 
                 </ul>
+                <ul class="nav navbar-nav navbar-right navbar-brand">
+                    <a href="showPurchases.jsp" > Show Purchases</a> 
+                </ul>
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="index.jsp" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li> 
                 </ul>
@@ -44,7 +47,7 @@
 
             <div class="jumbotron ">
                   <div class="row">
-                    <div class="col-md-4 col-md-offset-3">
+                    <div class="col-md-4 col-md-offset-8">
                         <form action="FrontServlet" class="search-form">
                             <div class="form-group has-feedback">
                                 <label for="search" class="sr-only">Search</label>

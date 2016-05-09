@@ -1,12 +1,13 @@
 package util;
 
 import entity.Book;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.ejb.Schedule;
 import javax.ejb.Stateful;
 
 @Stateful
-public class ShoppingCart implements ShoppingCartLocal {
+public class ShoppingCart implements ShoppingCartLocal, Serializable{
 
     ArrayList<Book> shoppingCart = new ArrayList();
     

@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group">
                         <label for="dni">DNI</label>
-                        <input type="text" class="form-control" id="dni" placeholder="DNI">
+                        <input type="text" class="form-control" name="dni" id="dni" placeholder="DNI">
                     </div>
                     <div class="form-group">
                         <label for="Phone">Phone</label>
