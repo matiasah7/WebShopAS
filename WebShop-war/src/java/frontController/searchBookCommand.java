@@ -41,9 +41,9 @@ public class searchBookCommand extends FrontCommand {
                     productsList.add(book);
             }
                      
-            
-            request.getSession().setAttribute("books", productsList);
-            forward("/index.jsp");
+            if(productsList.size() == products.size()) forward("/index.jsp");
+            request.getSession().setAttribute("searchBooks", productsList);
+            forward("/searchResult.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(searchBookCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
