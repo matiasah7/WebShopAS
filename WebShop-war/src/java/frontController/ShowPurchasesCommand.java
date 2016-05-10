@@ -20,7 +20,7 @@ import javax.servlet.ServletException;
  *
  * @author Matias
  */
-public class ShowPurchasesCommand extends FrontCommand{
+public class ShowPurchasesCommand extends FrontCommand {
 
     @Override
     public void process() {
@@ -30,17 +30,17 @@ public class ShowPurchasesCommand extends FrontCommand{
             List<Purchase> purchases = purchaseFacade.findAll();
             ArrayList<Purchase> customerPurchases = new ArrayList<>();
             for (Purchase purchase : purchases) {
-                if(purchase.getDni().equals(DNI)){
+                if (purchase.getDni().equals(DNI)) {
                     customerPurchases.add(purchase);
-                    System.out.println("---------------------------    añadí    --------------------------------");
                 }
             }
-            request.getSession().setAttribute("customerPurchases", customerPurchases);
-            System.out.println(((ArrayList<Purchase>) request.getSession().getAttribute("customerPurchases")).get(0).getDni());
+            if (!customerPurchases.isEmpty()) {
+                request.getSession().setAttribute("customerPurchases", customerPurchases);
+            }
             forward("/purchases.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowPurchasesCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

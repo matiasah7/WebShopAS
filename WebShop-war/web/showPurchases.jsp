@@ -22,9 +22,6 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="cart"><a href="ShoppingCart.jsp" ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</a></li> 
                 </ul>
-                <ul class="nav navbar-nav navbar-right navbar-brand">
-                    <a href="ShowPurchases.jsp" > Show Purchases</a> 
-                </ul>
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="index.jsp" ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li> 
                 </ul>

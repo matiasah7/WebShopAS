@@ -11,7 +11,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Matias
+ * @author matias
  */
 @Local
 public interface PurchaseFacadeLocal {

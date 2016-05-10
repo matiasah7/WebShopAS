@@ -45,7 +45,7 @@ public class PurchaseFinishCommand extends FrontCommand{
     }
     
     private void savePurchase(ShoppingCartLocal cart) throws NamingException{
-        PurchaseFacadeLocal purchaseFacade = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/PurchaseFacade");
+        PurchaseFacadeLocal purchaseFacade = InitialContext.doLookup("java:global/WebShop/WebShop-ejb/PurchaseFacade!controller.PurchaseFacadeLocal");
         Purchase newPurchase = new Purchase();
         newPurchase.setDni((String)request.getParameter("dni"));
         newPurchase.setId(null);
